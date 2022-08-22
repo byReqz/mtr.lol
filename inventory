@@ -1,0 +1,7 @@
+[nodes]
+#de.mtr.lol:21 ansible_user=root
+us.mtr.lol ansible_user=root
+fin.mtr.lol ansible_user=root
+
+[ui]
+mtr.lol:21 ansible_user=root

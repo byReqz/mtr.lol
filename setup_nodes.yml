@@ -1,0 +1,11 @@
+#!/usr/bin/env ansible-playbook
+
+- name: setup probehost2 nodes
+  hosts: nodes
+  roles:
+    - hostname
+
+- post_tasks:
+    - name: finished
+      debug:
+        msg: "node setup finished"
