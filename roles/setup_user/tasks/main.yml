@@ -1,0 +1,28 @@
+---
+
+- name: add probehost2 user
+  user:
+    name: probehost2
+    create_home: false
+    system: true
+    home: ""
+  register: new_user
+
+- name: add new user to service file
+  lineinfile:
+    path: /etc/systemd/system/probehost2.service
+    regexp: '^User='
+    line: "User={{ new_user.uid }}"
+
+- name: add new group to service file
+  lineinfile:
+    path: /etc/systemd/system/probehost2.service
+    regexp: '^Group='
+    line: "Group={{ new_user.group }}"
+
+- name: create blank log file
+  file:
+    path: "{{ logpath }}"
+    owner: "{{ new_user.uid }}"
+    group: "{{ new_user.group }}"
+    mode: '0640'

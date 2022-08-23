@@ -6,6 +6,7 @@
     - pull_deps
     - hostname
     - pull_probehost2
+    - setup_user
     - customize
     - systemd
     - test_avail
