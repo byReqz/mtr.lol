@@ -3,9 +3,14 @@
 - name: setup probehost2 nodes
   hosts: nodes
   roles:
+    - pull_deps
     - hostname
+    - pull_probehost2
+    - customize
+    - systemd
+    - test_avail
 
-- post_tasks:
+  post_tasks:
     - name: finished
       debug:
         msg: "node setup finished"

@@ -5,3 +5,7 @@ fin.mtr.lol ansible_user=root
 
 [ui]
 mtr.lol:21 ansible_user=root
+
+[nodes:vars]
+logpath=/var/log/probehost2.log
+runport=8000

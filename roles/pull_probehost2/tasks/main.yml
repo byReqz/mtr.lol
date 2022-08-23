@@ -1,0 +1,19 @@
+---
+
+- name: get latest tag
+  uri:
+    url: https://api.github.com/repos/byReqz/probehost2/releases/latest
+    return_content: true
+  register: latest_release
+
+- name: download and install latest release
+  get_url:
+    url: "https://github.com/byReqz/probehost2/releases/download/{{ latest_release.json.name }}/probehost2"
+    dest: /bin/probehost2
+    mode: '0755'
+
+- name: download and install systemd service
+  get_url:
+    url: "https://raw.githubusercontent.com/byReqz/probehost2/{{ latest_release.json.tag_name }}/systemd/probehost2.service"
+    dest: /lib/systemd/system/probehost2.service
+    mode: '0644'

@@ -1,0 +1,10 @@
+---
+
+- name: reload systemd
+  systemd:
+    daemon_reload: yes
+
+- name: enable probehost2 service
+  systemd:
+    name: probehost2
+    state: started

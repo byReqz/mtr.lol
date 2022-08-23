@@ -1,0 +1,21 @@
+---
+
+- name: test basic / request
+  uri:
+    url: "http://localhost:{{ runport }}"
+    status_code: 404
+
+- name: test ping request
+  uri:
+    url: "http://localhost:{{ runport }}/ping/localhost/c1"
+    status_code: 200
+
+- name: test traceroute request
+  uri:
+    url: "http://localhost:{{ runport }}/tracert/localhost"
+    status_code: 200
+
+- name: test nping request
+  uri:
+    url: "http://localhost:{{ runport }}/nping/localhost_{{ runport }}/tcp,c1"
+    status_code: 200
