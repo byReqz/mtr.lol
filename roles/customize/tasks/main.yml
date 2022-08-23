@@ -2,6 +2,6 @@
 
 - name: apply config from inventory
   lineinfile:
-    path: /lib/systemd/system/probehost2.service
+    path: /etc/systemd/system/probehost2.service
     regexp: '^ExecStart='
     line: "ExecStart=/bin/probehost2 --logfilepath {{ logpath }} --port {{ runport }}"
